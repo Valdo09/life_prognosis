@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Admin extends User{
 
-    //Cobstructor
+    //Constructor
     public Admin(String firstName, String lastName, String email, String password){
         super(firstName,lastName,email,password);
     }

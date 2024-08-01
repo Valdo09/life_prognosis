@@ -5,20 +5,24 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Welcome to life prognosis\n1) Login \n2) Complete your registration (Patient)");
-        Scanner scanner = new Scanner(System.in);
-        int choice = Integer.parseInt(scanner.nextLine());
+        while (true){
+            System.out.println("Welcome to life prognosis\n1) Login \n2) Complete your registration (Patient)");
+            Scanner scanner = new Scanner(System.in);
+            int choice = Integer.parseInt(scanner.nextLine());
 
-        switch (choice) {
-            case 1:
-                login();
-                break;
-            case 2:
-                completeRegistration();
-                break;
-            default:
-                System.out.println("Invalid choice");
+            switch (choice) {
+                case 1:
+                    login();
+                    break;
+                case 2:
+                    completeRegistration();
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+
         }
+        
     }
 
     public static void login() {
