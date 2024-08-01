@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public class Patient extends User {
     private String uuidCode;
     private LocalDate dateOfBirth;
@@ -20,7 +18,62 @@ public class Patient extends User {
         this.countryOfResidence = countryOfResidence;
     }
 
-    // Getters and setters can be added here
+    // Getters and setters
+    public String getUuidCode() {
+        return uuidCode;
+    }
+
+    public void setUuidCode(String uuidCode) {
+        this.uuidCode = uuidCode;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public boolean isHasHiv() {
+        return hasHiv;
+    }
+
+    public void setHasHiv(boolean hasHiv) {
+        this.hasHiv = hasHiv;
+    }
+
+    public LocalDate getDateOfDiagnosis() {
+        return dateOfDiagnosis;
+    }
+
+    public void setDateOfDiagnosis(LocalDate dateOfDiagnosis) {
+        this.dateOfDiagnosis = dateOfDiagnosis;
+    }
+
+    public boolean isOnArtDrugs() {
+        return isOnArtDrugs;
+    }
+
+    public void setOnArtDrugs(boolean onArtDrugs) {
+        isOnArtDrugs = onArtDrugs;
+    }
+
+    public LocalDate getDateOfArtDrugs() {
+        return dateOfArtDrugs;
+    }
+
+    public void setDateOfArtDrugs(LocalDate dateOfArtDrugs) {
+        this.dateOfArtDrugs = dateOfArtDrugs;
+    }
+
+    public String getCountryOfResidence() {
+        return countryOfResidence;
+    }
+
+    public void setCountryOfResidence(String countryOfResidence) {
+        this.countryOfResidence = countryOfResidence;
+    }
 
     @Override
     public String toString() {
