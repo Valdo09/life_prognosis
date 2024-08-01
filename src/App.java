@@ -22,7 +22,6 @@ public class App {
             }
 
         }
-        
     }
 
     public static void login() {
@@ -63,14 +62,17 @@ public class App {
                             newadmin.initiatePatientRegistration();
                             break;
                         case 2:
-                            // Add download patient data functionality
+                            newadmin.downloadAllUsers();
+                            break;
+                        case 3:
+                            newadmin.downloadStatistics();
                             break;
                         default:
                             System.out.println("Invalid choice");
                     }
                 } else if ("PATIENT".equals(role)) {
                     System.out.println("Logged in as Patient");
-                    System.out.println("Welcome to life prognosis\n1) View Profie \n2) Update Profile");
+                    System.out.println("Welcome to life prognosis\n1) View Profile \n2) Update Profile");
                     // Add patient-specific functionality here
                 }
             } else {
