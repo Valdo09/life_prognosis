@@ -70,7 +70,7 @@ public class App {
                     }
                 } else if ("PATIENT".equals(role)) {
                     System.out.println("Logged in as Patient");
-                    System.out.println("Welcome to life prognosis\n1) Complete Registration \n2) Download Patient Data \n3) Download Statistics");
+                    System.out.println("Welcome to life prognosis\n1) View Profie \n2) Update Profile");
                     // Add patient-specific functionality here
                 }
             } else {

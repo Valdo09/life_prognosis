@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.util.Scanner;
 public class Patient extends User {
     private String uuidCode;
     private LocalDate dateOfBirth;
