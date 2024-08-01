@@ -1,9 +1,10 @@
 
+
 USER_STORE='./data/user-store.txt'
-function login(){
-    local email= $1
+ login(){
+    local email=$1
     local password=$2
-    local hashedPassword= $(echo -n $password | openssl dgst -sha256 | awk '{print $2}')
+    local hashedPassword=$(echo -n "$password" | openssl dgst -sha256 | awk '{print $2}')
 
     grep "$email,$hashedPassword" "$USER_STORE" > /dev/null 
 
@@ -14,6 +15,7 @@ function login(){
     fi
 
 }  
+login "$@"
 
 function initiate_patient_registration(){
     local email=$1

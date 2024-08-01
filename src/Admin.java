@@ -12,7 +12,7 @@ public class Admin extends User{
     public boolean login(String email, String password){
         try{
             ProcessBuilder pb = new ProcessBuilder("bash","./bash/user-manager.sh","login",email,password);
-            pb.inheritIO();
+            pb.redirectErrorStream(true);
             Process process = pb.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
@@ -21,10 +21,8 @@ public class Admin extends User{
                 output.append(line);
             }
             process.waitFor();
-            System.out.println(output.toString().trim().equals("success"));
-            return output.toString().trim().equals("success");
-            
-            
+            System.out.println(output.toString());
+            return output.toString().trim().equals("success");  
             
         }
         catch(Exception e){
