@@ -13,7 +13,7 @@ public class App {
                 login();
                 break;
             case 2:
-                initiatePatientRegistration();
+                //initiatePatientRegistration();
                 break;
             default:
                 System.out.println("Invalid choice");
@@ -46,15 +46,16 @@ public class App {
                 System.out.println("Login successful");
 
                 String[] parts = result.split(",");
-                String role = parts[1];
+                String role = parts[3];
                 if ("ADMIN".equals(role)) {
                     System.out.println("Logged in as Admin");
+                    Admin newadmin=new Admin(parts[0],parts[1],parts[2],parts[4]);
                     System.out.println("Welcome to life prognosis\n1) Initiate Patient Registration \n2) Download Patient Data \n3) Download Statistics");
                     
                     int choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                     case 1:
-                        initiatePatientRegistration();
+                        newadmin.initiatePatientRegistration();
                         break;
                     case 2:
                         
@@ -75,26 +76,5 @@ public class App {
         }
     }
 
-    public static void initiatePatientRegistration() {
-        System.out.println("Enter patient's email:");
-        Scanner scanner = new Scanner(System.in);
-        String email = scanner.nextLine();
-
-        try {
-            ProcessBuilder pb = new ProcessBuilder("bash", "../bash/user-manager.sh", "initiate_patient_registration", email);
-            pb.redirectErrorStream(true);
-            Process process = pb.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            StringBuilder output = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                output.append(line);
-            }
-            process.waitFor();
-            System.out.println(output.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error in execution");
-        }
-    }
+    
 }
