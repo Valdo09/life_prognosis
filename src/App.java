@@ -73,6 +73,7 @@ public class App {
                 } else if ("PATIENT".equals(role)) {
                     System.out.println("Logged in as Patient");
                     System.out.println("Welcome to life prognosis\n1) View Profile \n2) Update Profile");
+                    
                     // Add patient-specific functionality here
                 }
             } else {

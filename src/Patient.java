@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.util.Scanner;
+
 public class Patient extends User {
     private String uuidCode;
     private LocalDate dateOfBirth;
@@ -11,8 +9,9 @@ public class Patient extends User {
     private LocalDate dateOfArtDrugs;
     private String countryOfResidence;
 
+    // Constructor
     public Patient(String firstName, String lastName, String email, String password, String uuidCode, LocalDate dateOfBirth, boolean hasHiv, LocalDate dateOfDiagnosis, boolean isOnArtDrugs, LocalDate dateOfArtDrugs, String countryOfResidence) {
-        super(firstName, lastName, email, password, UserRole.Patient);
+        super(firstName, lastName, email, password, UserRole.PATIENT);
         this.uuidCode = uuidCode;
         this.dateOfBirth = dateOfBirth;
         this.hasHiv = hasHiv;
@@ -39,7 +38,7 @@ public class Patient extends User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public boolean isHasHiv() {
+    public boolean hasHiv() {
         return hasHiv;
     }
 
@@ -80,6 +79,13 @@ public class Patient extends User {
     }
 
     @Override
+    public boolean login(String email, String password) {
+        // Implement actual login logic here
+        // For demonstration, simply checking if the email and password match the current object's details
+        return this.getEmail().equals(email) && this.getPassword().equals(password);
+    }
+
+    @Override
     public String toString() {
         return "Patient{" +
                 "uuidCode='" + uuidCode + '\'' +
@@ -89,11 +95,10 @@ public class Patient extends User {
                 ", isOnArtDrugs=" + isOnArtDrugs +
                 ", dateOfArtDrugs=" + dateOfArtDrugs +
                 ", countryOfResidence='" + countryOfResidence + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", role=" + getRole() +
                 '}';
     }
 }

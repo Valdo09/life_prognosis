@@ -7,7 +7,7 @@ public class Admin extends User{
 
     // Constructor
     public Admin(String firstName, String lastName, String email, String password){
-        super(firstName, lastName, email, password);
+        super(firstName, lastName, email, password,UserRole.ADMIN);
     }
 
     @Override
