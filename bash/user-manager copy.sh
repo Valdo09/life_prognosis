@@ -36,51 +36,24 @@ complete_registration() {
     local is_on_art_drugs=$9
     local date_of_art_drugs=${10}
     local country_of_residence=${11}
+    
 
     local hashedPassword=$(echo -n $password | openssl dgst -sha256 | awk '{print $2}')
 
-    # Convert country_of_residence to lowercase for case-insensitive comparison
-    local country_lower=$(echo "$country_of_residence" | tr '[:upper:]' '[:lower:]')
-
-    # Find the ISO code for the given country (also convert country names in CSV to lowercase)
-    local iso_code=$(awk -F, -v country="$country_lower" 'tolower($1) == country {print $6}' "$COUNTRIES_CSV")
+    # Find the ISO code for the given country
+    local iso_code=$(awk -F, -v country="$country_of_residence" '$1 == country {print $6}' "$COUNTRIES_CSV")
 
     if [ -z "$iso_code" ]; then
         echo "Error: ISO code for country '$country_of_residence' not found."
         exit 1
     fi
-
-    # Calculate the lifespan based on ART drug status
-    local life_expectancy
-    if [ "$is_on_art_drugs" == "false" ]; then
-        life_expectancy=5
-    else
-        # Retrieve the average life expectancy for the country
-        local avg_life_expectancy=$(awk -F, -v iso="$iso_code" '$6 == iso {print $7}' "$COUNTRIES_CSV")
-
-        if [ -z "$avg_life_expectancy" ]; then
-            echo "Error: Life expectancy for country '$country_of_residence' not found."
-            exit 1
-        fi
-
-        local birth_year=$(echo $date_of_birth | cut -d'-' -f1)
-        local diagnosis_year=$(echo $date_of_diagnosis | cut -d'-' -f1)
-        local delay_years=$((diagnosis_year - birth_year))
-
-        # Apply the delay and ART drug rules
-        life_expectancy=$((avg_life_expectancy - birth_year))
-        for (( i=0; i<$delay_years; i++ )); do
-            life_expectancy=$(echo "$life_expectancy * 0.9" | bc)
-        done
-        life_expectancy=$(echo "$life_expectancy * 0.9" | bc) # Adjusted for initial ART year
-    fi
-
+    
     # Remove the existing entry if it exists
     sed -i "/$uuid_code/d" "$USER_STORE"
-
-    # Add the new entry with the calculated lifespan
+    
+    # Add the new entry
     echo "$first_name,$last_name,PATIENT,$email,$hashedPassword,$date_of_birth,$has_hiv,$date_of_diagnosis,$is_on_art_drugs,$date_of_art_drugs,$iso_code,$life_expectancy,$uuid_code" >> "$USER_STORE"
-
+    
     echo "Registration completed successfully for UUID: $uuid_code"
 }
 

@@ -8,9 +8,12 @@ public class Patient extends User {
     private boolean isOnArtDrugs;
     private LocalDate dateOfArtDrugs;
     private String countryOfResidence;
+    private String life_expectacy;
 
     // Constructor
-    public Patient(String firstName, String lastName, String email, String password, String uuidCode, LocalDate dateOfBirth, boolean hasHiv, LocalDate dateOfDiagnosis, boolean isOnArtDrugs, LocalDate dateOfArtDrugs, String countryOfResidence) {
+    public Patient(String firstName, String lastName, String email, String password, String uuidCode,
+            LocalDate dateOfBirth, boolean hasHiv, LocalDate dateOfDiagnosis, boolean isOnArtDrugs,
+            LocalDate dateOfArtDrugs, String countryOfResidence, String life_expectacy) {
         super(firstName, lastName, email, password, UserRole.PATIENT);
         this.uuidCode = uuidCode;
         this.dateOfBirth = dateOfBirth;
@@ -19,6 +22,7 @@ public class Patient extends User {
         this.isOnArtDrugs = isOnArtDrugs;
         this.dateOfArtDrugs = dateOfArtDrugs;
         this.countryOfResidence = countryOfResidence;
+        this.life_expectacy = life_expectacy;
     }
 
     // Getters and setters
@@ -78,11 +82,39 @@ public class Patient extends User {
         this.countryOfResidence = countryOfResidence;
     }
 
+    public String getLifeExpectacy() {
+        return life_expectacy;
+    }
+
+    public void setLifeExpectacy(String life_expectancy) {
+        this.life_expectacy = life_expectancy;
+    }
+
     @Override
     public boolean login(String email, String password) {
         // Implement actual login logic here
-        // For demonstration, simply checking if the email and password match the current object's details
+        // For demonstration, simply checking if the email and password match the
+        // current object's details
         return this.getEmail().equals(email) && this.getPassword().equals(password);
+    }
+
+    public void displayProfile() {
+        System.out.println("===== Patient Profile =====");
+        System.out.println("UUID: " + uuidCode);
+        System.out.println("Name: " + getFirstName() + " " + getLastName());
+        System.out.println("Email: " + getEmail());
+        System.out.println("Date of Birth: " + dateOfBirth);
+        System.out.println("Has HIV: " + (hasHiv ? "Yes" : "No"));
+        if (hasHiv) {
+            System.out.println("Date of Diagnosis: " + dateOfDiagnosis);
+            System.out.println("On ART Drugs: " + (isOnArtDrugs ? "Yes" : "No"));
+            if (isOnArtDrugs) {
+                System.out.println("Date ART Drugs Started: " + dateOfArtDrugs);
+            }
+        }
+        System.out.println("Country of Residence: " + countryOfResidence);
+        System.out.println("Life expectancy:" + life_expectacy);
+        System.out.println("===========================\n");
     }
 
     @Override

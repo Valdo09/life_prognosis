@@ -1,6 +1,4 @@
+firstname,lastname,role,email,password,date_of_birth,has_hiv,date_of_diagnosis,is_on_art_drugs,date_of_art_drugs,iso_code,life_expectancy,uuid_code
 Admin,Default,ADMIN,defaultadmin@lifeprognosis.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc
-orengo@gmail.com,223619ab-415d-408a-9d0c-63d7dcebce89,PATIENT
-Enock,wanza,PATIENT,assassin@gmail.com,c5c2e54de9d2833a896306dbe2babf0c2a0d7091c25efbaa0b3138aceca4a058,2021-09-09,false,2024-09-09,false,2024-09-09,Kenya
-Enock@gmail.com,2a41f40f-23c4-45d6-873e-a30e91fd7e5c,PATIENT
-emmanuel,Nduka,PATIENT,nduka@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,2001-12-12,false,2024-12-12,false,2024-12-12,Kenya
-lee,makwiny,PATIENT,lee@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,2001-12-12,false,2024-12-12,false,2024-12-12,KEN
+kimani,kimanyuru,PATIENT,kimani@gmail.com,a9cb065a4084fa1fc9b051e99486a6401bbdaf18ef250734ac2eaad9ffb98111,1987-12-12,false,2001-12-12,false,2024-03-03,KEN,,de686bf2-b5e5-458c-ab8d-30440b5507a5
+Enock,Mwadime,PATIENT,enock@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,true,2023-12-12,false,1970-01-01,RWA,5,c548a3fb-3c9c-42ac-a20b-2bc85c9d8586
