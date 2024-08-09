@@ -85,7 +85,18 @@ complete_registration() {
 }
 
 download_all_users() {
-    touch "../data/users.csv"
+    # Set the output CSV file path
+    local output_file="../data/users.csv"
+    
+    # Print the header
+    echo "firstname,lastname,role,email,password,date_of_birth,has_hiv,date_of_diagnosis,is_on_art_drugs,date_of_art_drugs,iso_code,life_expectancy,uuid_code" > "$output_file"
+    
+    # Extract the desired columns and append to the output file
+    awk -F, 'NR > 1{
+        print $1","$2","$3","$4","$5","$6","$7","$8","$9","$10","$11","$12","$13
+    }' "$USER_STORE" >> "$output_file"
+
+    echo "Users exported to $output_file successfully."
 }
 
 "$@"
