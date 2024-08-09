@@ -67,7 +67,7 @@ public class Admin extends User{
             }
             writer.close();
             process.waitFor();
-            System.out.println("All users downloaded successfully to ../data/all_users.csv");
+            System.out.println("All users downloaded successfully to ../data/users.csv");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error in execution");

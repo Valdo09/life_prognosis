@@ -46,7 +46,7 @@ public class App {
             process.waitFor();
             String result = output.toString().trim();
 
-            // System.out.println(result + "\n");
+            //System.out.println(result + "\n");
 
             if (result.startsWith("success")) {
                 System.out.println("Login successful");
@@ -83,7 +83,7 @@ public class App {
 
                 } else if ("PATIENT".equals(role)) {
 
-                    String uuidCode = parts[12];
+                    String uuidCode = parts[13];
                     LocalDate dateOfBirth = LocalDate.parse(parts[6]);
                     boolean hasHiv = Boolean.parseBoolean(parts[7]);
                     LocalDate dateOfDiagnosis = LocalDate.parse(parts[8]);
@@ -92,9 +92,10 @@ public class App {
                     String countryOfResidence = parts[11];
 
                     System.out.println("Logged in as Patient");
+                    //System.out.println(parts);
                     while (true) {
 
-                        Patient newpatient = new Patient(parts[1], parts[2], parts[3], parts[5], uuidCode, dateOfBirth,
+                        Patient newpatient = new Patient(parts[1], parts[2], parts[4], parts[5], uuidCode, dateOfBirth,
                                 hasHiv, dateOfDiagnosis, isOnArtDrugs, dateOfArtDrugs, countryOfResidence, parts[12]);
                         System.out.println("1) View Profile \n2) Update Profile \n3)Logout");
                         int choice = Integer.parseInt(scanner.nextLine());

@@ -2,3 +2,5 @@ firstname,lastname,role,email,password,date_of_birth,has_hiv,date_of_diagnosis,i
 Admin,Default,ADMIN,defaultadmin@lifeprognosis.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc
 kimani,kimanyuru,PATIENT,kimani@gmail.com,a9cb065a4084fa1fc9b051e99486a6401bbdaf18ef250734ac2eaad9ffb98111,1987-12-12,false,2001-12-12,false,2024-03-03,KEN,,de686bf2-b5e5-458c-ab8d-30440b5507a5
 Enock,Mwadime,PATIENT,enock@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,true,2023-12-12,false,1970-01-01,RWA,5,c548a3fb-3c9c-42ac-a20b-2bc85c9d8586
+nge,lala,PATIENT,ngela@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-02-01,false,1970-01-01,false,1970-01-01,NGA,5,4812544d-abb5-4ef7-b278-b20fb17140af
+felix,munyao,PATIENT,felix@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,true,2020-12-12,true,2022-12-12,KEN,20,a857067e-5471-445f-bdc5-5f56bd0f4e14

@@ -63,16 +63,24 @@ complete_registration() {
             exit 1
         fi
 
+        # Convert avg_life_expectancy to an integer
+        avg_life_expectancy=$(printf "%.0f" "$avg_life_expectancy")
+        echo $avg_life_expectancy
         local birth_year=$(echo $date_of_birth | cut -d'-' -f1)
         local diagnosis_year=$(echo $date_of_diagnosis | cut -d'-' -f1)
-        local delay_years=$((diagnosis_year - birth_year))
+        local art_year=$(echo $date_of_art_drugs | cut -d'-' -f1)
+        local delay_years=$((art_year - diagnosis_year))
+        local age=$((diagnosis_year - birth_year))
 
         # Apply the delay and ART drug rules
-        life_expectancy=$((avg_life_expectancy - birth_year))
+        life_expectancy=$((avg_life_expectancy - age))
         for (( i=0; i<$delay_years; i++ )); do
-            life_expectancy=$(echo "$life_expectancy * 0.9" | bc)
+            life_expectancy=$(echo "scale=2; $life_expectancy * 0.9" | bc)
         done
-        life_expectancy=$(echo "$life_expectancy * 0.9" | bc) # Adjusted for initial ART year
+        life_expectancy=$(echo "scale=2; $life_expectancy * 0.9" | bc) # Adjusted for initial ART year
+
+        # Convert the result to an integer (if needed)
+        life_expectancy=$(printf "%.0f" "$life_expectancy")
     fi
 
     # Remove the existing entry if it exists
@@ -83,6 +91,7 @@ complete_registration() {
 
     echo "Registration completed successfully for UUID: $uuid_code"
 }
+
 
 download_all_users() {
     # Set the output CSV file path
