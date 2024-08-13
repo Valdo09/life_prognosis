@@ -76,15 +76,22 @@ public class Admin extends User{
 
     public static void downloadStatistics() {
         try {
-            PrintWriter writer = new PrintWriter("../data/statistics.csv", "UTF-8");
-            // Write headers for the statistics CSV
-            writer.println("Statistic,Value");
-            // Currently empty, to be filled with actual statistics later
+            ProcessBuilder pb = new ProcessBuilder("bash", "../bash/user-manager.sh", "download_statistics");
+            pb.redirectErrorStream(true);
+            Process process = pb.start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            PrintWriter writer = new PrintWriter("../data/all_users.csv", "UTF-8");
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.println(line);
+            }
             writer.close();
-            System.out.println("Statistics downloaded successfully to ../data/statistics.csv");
+            process.waitFor();
+            System.out.println("All users downloaded successfully to ../data/statistics.csv");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error in execution");
         }
+        
     }
 }

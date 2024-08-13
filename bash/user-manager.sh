@@ -108,4 +108,53 @@ download_all_users() {
     echo "Users exported to $output_file successfully."
 }
 
+download_statistics() {
+    local output_file="../data/statistics.csv"
+    local total_patients=0
+    local total_survival_rate=0
+    local survival_rates=()
+
+    # Read and process data from the user store
+    while IFS=, read -r firstname lastname role email password dob has_hiv diagnosis_date art_status art_date iso_code life_expectancy uuid_code; do
+        if [[ "$role" == "PATIENT" ]]; then
+            total_patients=$((total_patients + 1))
+            total_survival_rate=$(echo "$total_survival_rate + $life_expectancy" | bc)
+            survival_rates+=("$life_expectancy")
+        fi
+    done < <(tail -n +2 "$USER_STORE")  # Skip the header
+
+    # Calculate average survival rate
+    local average_survival_rate=$(echo "scale=2; $total_survival_rate / $total_patients" | bc)
+
+    # Sort survival rates to calculate median and percentiles
+    IFS=$'\n' survival_rates=($(sort -n <<<"${survival_rates[*]}"))
+    unset IFS
+
+    # Calculate median survival rate
+    local median_survival_rate
+    if (( total_patients % 2 == 0 )); then
+        local mid_index=$((total_patients / 2))
+        local mid_val1=${survival_rates[mid_index-1]}
+        local mid_val2=${survival_rates[mid_index]}
+        median_survival_rate=$(echo "scale=2; ($mid_val1 + $mid_val2) / 2" | bc)
+    else
+        local mid_index=$(((total_patients + 1) / 2))
+        median_survival_rate=${survival_rates[mid_index-1]}
+    fi
+
+    # Calculate percentiles (e.g., 25th, 75th)
+    local percentile_25th=${survival_rates[$((total_patients / 4))]}
+    local percentile_75th=${survival_rates[$(((3 * total_patients) / 4))]}
+
+    # Write the statistics to the output CSV
+    echo "Statistic,Value" > "$output_file"
+    echo "Total Patients,$total_patients" >> "$output_file"
+    echo "Average Survival Rate,$average_survival_rate" >> "$output_file"
+    echo "Median Survival Rate,$median_survival_rate" >> "$output_file"
+    echo "25th Percentile Survival Rate,$percentile_25th" >> "$output_file"
+    echo "75th Percentile Survival Rate,$percentile_75th" >> "$output_file"
+
+    echo "Statistics downloaded successfully to $output_file"
+}
+
 "$@"
