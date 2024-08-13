@@ -508,3 +508,4 @@ John,Jones,PATIENT,john500@gmail.com,c871a5b22be44e8bb3ee2927bc335ee4,1998-06-17
 assassin,kranko,PATIENT,assassin@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,true,2000-12-12,true,2003-12-12,RWA,35,24915904-42ce-4d0d-9970-3bf0135934dd
 ,,PATIENT,4,,,,,,,,,4022feab-0b5a-402a-85b8-be8eac7ba634
 kinyozi,kinyozi,PATIENT,kinyozi@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,true,2000-12-12,true,2020-12-12,RWA,6,6aba2307-dfe1-4fe3-8779-4cb6b9bfa661
+wambua,wambua,PATIENT,wambua@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,true,2001-12-12,true,2019-12-12,NGA,5,71af3c3b-402a-4dbd-917e-8003100e74b0
