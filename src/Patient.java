@@ -99,22 +99,33 @@ public class Patient extends User {
     }
 
     public void displayProfile() {
-        System.out.println("===== Patient Profile =====");
-        System.out.println("UUID: " + uuidCode);
-        System.out.println("Name: " + getFirstName() + " " + getLastName());
-        System.out.println("Email: " + getEmail());
-        System.out.println("Date of Birth: " + dateOfBirth);
-        System.out.println("Has HIV: " + (hasHiv ? "Yes" : "No"));
+        String reset = "\033[0m"; // Text Reset
+        String blue = "\033[34m"; // BLUE
+        String green = "\033[32m"; // GREEN
+        String red = "\033[31m"; // RED
+        String bold = "\033[1m"; // BOLD
+        String underline = "\033[4m"; // UNDERLINE
+
+        System.out.println(bold + underline + blue + "===== Patient Profile =====" + reset);
+        System.out.println(bold + blue + "UUID: " + reset + uuidCode);
+        System.out.println(bold + blue + "Name: " + reset + getFirstName() + " " + getLastName());
+        System.out.println(bold + blue + "Email: " + reset + getEmail());
+        System.out.println(bold + blue + "Date of Birth: " + reset + dateOfBirth);
+        System.out.println(bold + blue + "Has HIV: " + reset + (hasHiv ? green + "Yes" + reset : red + "No" + reset));
+
         if (hasHiv) {
-            System.out.println("Date of Diagnosis: " + dateOfDiagnosis);
-            System.out.println("On ART Drugs: " + (isOnArtDrugs ? "Yes" : "No"));
+            System.out.println(bold + blue + "Date of Diagnosis: " + reset + dateOfDiagnosis);
+            System.out.println(bold + blue + "On ART Drugs: " + reset
+                    + (isOnArtDrugs ? green + "Yes" + reset : red + "No" + reset));
+
             if (isOnArtDrugs) {
-                System.out.println("Date ART Drugs Started: " + dateOfArtDrugs);
+                System.out.println(bold + blue + "Date ART Drugs Started: " + reset + dateOfArtDrugs);
             }
         }
-        System.out.println("Country of Residence: " + countryOfResidence);
-        System.out.println("Life expectancy:" + life_expectacy);
-        System.out.println("===========================\n");
+
+        System.out.println(bold + blue + "Country of Residence: " + reset + countryOfResidence);
+        System.out.println(bold + blue + "Life Expectancy: " + reset + life_expectacy);
+        System.out.println(bold + underline + blue + "===========================" + reset + "\n");
     }
 
     @Override
