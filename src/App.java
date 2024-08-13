@@ -127,7 +127,6 @@ public class App {
     }
 
     public static void completeRegistration(Scanner scanner) {
-
         System.out.println("Enter your UUID:");
         String uuidCode = scanner.nextLine();
 
@@ -149,8 +148,8 @@ public class App {
         System.out.println("Enter your date of birth (YYYY-MM-DD):");
         LocalDate dateOfBirth = LocalDate.parse(scanner.nextLine());
 
-        System.out.println("Do you have HIV? (true/false):");
-        boolean hasHiv = Boolean.parseBoolean(scanner.nextLine());
+        System.out.println("Do you have HIV? (1 for Yes, 2 for No):");
+        boolean hasHiv = scanner.nextLine().equals("1");
 
         LocalDate dateOfDiagnosis;
         boolean isOnArtDrugs;
@@ -160,8 +159,8 @@ public class App {
             System.out.println("Enter your date of diagnosis (YYYY-MM-DD):");
             dateOfDiagnosis = LocalDate.parse(scanner.nextLine());
 
-            System.out.println("Are you on ART drugs? (true/false):");
-            isOnArtDrugs = Boolean.parseBoolean(scanner.nextLine());
+            System.out.println("Are you on ART drugs? (1 for Yes, 2 for No):");
+            isOnArtDrugs = scanner.nextLine().equals("1");
 
             if (isOnArtDrugs) {
                 System.out.println("Enter your date of ART drugs start (YYYY-MM-DD):");
@@ -170,7 +169,6 @@ public class App {
                 dateOfArtDrugs = LocalDate.parse("1970-01-01");
             }
         } else {
-            // If the user does not have HIV, assume all subsequent values are false/empty.
             dateOfDiagnosis = LocalDate.parse("1970-01-01");
             isOnArtDrugs = false;
             dateOfArtDrugs = LocalDate.parse("1970-01-01");
