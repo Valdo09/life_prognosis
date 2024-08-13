@@ -1,5 +1,5 @@
 firstname,lastname,role,email,password,date_of_birth,has_hiv,date_of_diagnosis,is_on_art_drugs,date_of_art_drugs,iso_code,life_expectancy,uuid_code
-Admin,Default,ADMIN,defaultadmin@lifeprognosis.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,,,,,,,,
+Admin,Default,ADMIN,admin@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,,,,,,,,
 kimani,kimanyuru,PATIENT,kimani@gmail.com,a9cb065a4084fa1fc9b051e99486a6401bbdaf18ef250734ac2eaad9ffb98111,1987-12-12,False,2001-12-12,False,2024-03-03,KEN,,de686bf2-b5e5-458c-ab8d-30440b5507a5
 Enock,Mwadime,PATIENT,enock@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,True,2023-12-12,False,1970-01-01,RWA,5.0,c548a3fb-3c9c-42ac-a20b-2bc85c9d8586
 nge,lala,PATIENT,ngela@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-02-01,False,1970-01-01,False,1970-01-01,NGA,5.0,4812544d-abb5-4ef7-b278-b20fb17140af
@@ -504,3 +504,7 @@ Chris,Williams,PATIENT,chris497@gmail.com,b97a5b64661e4029b883f7a2757f7d8e,1953-
 John,Doe,PATIENT,john498@gmail.com,d108e7f3d8674b6580dbf989467d2229,1991-01-21,False,,False,,KEN,,f8278d36-cc8d-44a5-92dd-7e2ebf0d90c0
 Kris,Brown,PATIENT,kris499@gmail.com,805ea9ff52af458facc48a0d4bcf0ec8,1951-06-28,True,2011-08-13,False,,ZAF,79.0,c3f3a62b-62cb-4643-99eb-736e9c1ec014
 John,Jones,PATIENT,john500@gmail.com,c871a5b22be44e8bb3ee2927bc335ee4,1998-06-17,False,,False,,RWA,,f39b8a0d-346f-48c6-8a64-b3bc0499e3d2
+,,PATIENT,tiku@gmail.com,,,,,,,,,94657b8c-d536-4966-95f8-4d6d73cb1322
+assassin,kranko,PATIENT,assassin@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,true,2000-12-12,true,2003-12-12,RWA,35,24915904-42ce-4d0d-9970-3bf0135934dd
+,,PATIENT,4,,,,,,,,,4022feab-0b5a-402a-85b8-be8eac7ba634
+kinyozi,kinyozi,PATIENT,kinyozi@gmail.com,4da3376323046a3bb6759f0a3f4ae7100a0567950c53ee42d2e19201baaa6dfc,1987-12-12,true,2000-12-12,true,2020-12-12,RWA,6,6aba2307-dfe1-4fe3-8779-4cb6b9bfa661

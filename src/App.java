@@ -1,16 +1,17 @@
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class App {
-    private static final String RESET = "\033[0m";  // Text Reset
-    private static final String BLUE = "\033[34m";   // BLUE
-    private static final String GREEN = "\033[32m";  // GREEN
-    private static final String RED = "\033[31m";    // RED
-    private static final String CYAN = "\033[36m";   // CYAN
+    private static final String RESET = "\033[0m"; // Text Reset
+    private static final String BLUE = "\033[34m"; // BLUE
+    private static final String GREEN = "\033[32m"; // GREEN
+    private static final String RED = "\033[31m"; // RED
+    private static final String CYAN = "\033[36m"; // CYAN
     private static final String YELLOW = "\033[33m"; // YELLOW
-    private static final String BOLD = "\033[1m";    // BOLD
+    private static final String BOLD = "\033[1m"; // BOLD
     private static final String UNDERLINE = "\033[4m"; // UNDERLINE
 
     public static void main(String[] args) throws Exception {
@@ -46,8 +47,19 @@ public class App {
         System.out.println(BOLD + CYAN + "\nLOGIN" + RESET);
         System.out.print(YELLOW + "Enter your email: " + RESET);
         String email = scanner.nextLine();
-        System.out.print(YELLOW + "Enter your password: " + RESET);
-        String password = scanner.nextLine();
+        Console console = System.console();
+        String password = "";
+
+        if (console != null) {
+            // Use the Console to read the password without echoing characters to the
+            // console
+            char[] passwordArray = console.readPassword(YELLOW + "Enter your password: " + RESET);
+            password = new String(passwordArray);
+        } else {
+            // Fallback for environments where Console is not available (e.g., some IDEs)
+            System.out.print(YELLOW + "Enter your password: " + RESET);
+            password = scanner.nextLine();
+        }
 
         try {
             ProcessBuilder pb = new ProcessBuilder("bash", "../bash/user-manager.sh", "login", email, password);
@@ -157,8 +169,18 @@ public class App {
         System.out.print(YELLOW + "Enter your email: " + RESET);
         String email = scanner.nextLine();
 
-        System.out.print(YELLOW + "Enter your password: " + RESET);
-        String password = scanner.nextLine();
+        Console console = System.console();
+        String password = "";
+
+        if (console != null) {
+            // Use the Console to read the password without echoing characters to the console
+            char[] passwordArray = console.readPassword(YELLOW + "Enter your password: " + RESET);
+            password = new String(passwordArray);
+        } else {
+            // Fallback for environments where Console is not available (e.g., some IDEs)
+            System.out.print(YELLOW + "Enter your password: " + RESET);
+            password = scanner.nextLine();
+        }
 
         System.out.print(YELLOW + "Enter your country of residence: " + RESET);
         String countryOfResidence = scanner.nextLine();
